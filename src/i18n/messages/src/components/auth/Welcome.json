@@ -1,0 +1,41 @@
+[
+  {
+    "id": "welcome.signupButton",
+    "defaultMessage": "!!!Create a free account",
+    "file": "src\\components\\auth\\Welcome.js",
+    "start": {
+      "line": 11,
+      "column": 16
+    },
+    "end": {
+      "line": 14,
+      "column": 3
+    }
+  },
+  {
+    "id": "welcome.loginButton",
+    "defaultMessage": "!!!Login to your account",
+    "file": "src\\components\\auth\\Welcome.js",
+    "start": {
+      "line": 15,
+      "column": 15
+    },
+    "end": {
+      "line": 18,
+      "column": 3
+    }
+  },
+  {
+    "id": "services.serverless",
+    "defaultMessage": "!!!Use Duct without an Account",
+    "file": "src\\components\\auth\\Welcome.js",
+    "start": {
+      "line": 19,
+      "column": 14
+    },
+    "end": {
+      "line": 22,
+      "column": 3
+    }
+  }
+]

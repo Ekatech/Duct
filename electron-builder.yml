@@ -1,0 +1,65 @@
+directories:
+  app: ./build
+  output: ./out
+
+appId: "com.kytwb.ferdi"
+
+compression: maximum
+
+mac:
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  category: public.app-category.productivity
+  icon: ./build-helpers/images/icon.icns
+  darkModeSupport: true
+  entitlements: "./build-helpers/entitlements.mas.plist"
+  entitlementsInherit: "./build-helpers/entitlements.mas.inherit.plist"
+  extendInfo:
+    NSMicrophoneUsageDescription: "This app requires camera access for video messaging services."
+    NSCameraUsageDescription: "This app requires microphone access for audio messaging services."
+
+afterSign: ./build-helpers/notarize.js
+
+dmg:
+  background: ./build-helpers/images/dmgInstaller.tiff
+  icon: ./build-helpers/images/icon.icns
+  iconSize: 128
+  contents:
+    [
+      { x: 380, y: 240, type: link, path: /Applications },
+      { x: 122, y: 240, type: file },
+    ]
+
+win:
+  icon: ./build-helpers/images/icon.ico
+  target:
+    - target: nsis
+      arch: [x64, ia32]
+    - target: portable
+      arch: [x64, ia32]
+  publisherName: 'Amine Mouafik'
+
+linux:
+  icon: ./build-helpers/images/icons
+  category: Network;InstantMessaging;
+  executableName: ferdi
+  synopsis: "Messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many many more."
+  description: "Duct is your messaging app / former Emperor of Austria and combines chat & messaging services into one application. Duct currently supports Slack, WhatsApp, WeChat, HipChat, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Duct for free for Mac & Windows."
+  target:
+    - target: AppImage
+    - target: deb
+    - target: tar.gz
+    - target: rpm
+
+nsis:
+  perMachine: false
+  oneClick: true
+
+protocols:
+  name: Ferdi
+  schemes: [ferdi]
+
+asarUnpack:
+  - ./recipes
+  - ./node_modules/mac-screen-capture-permissions
+  - ./assets/images/taskbar

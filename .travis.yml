@@ -1,0 +1,69 @@
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      dist: xenial
+      addons:
+        apt:
+          packages:
+            - libx11-dev
+            - libxext-dev
+            - libxss-dev
+            - libxkbfile-dev
+            - rpm
+    - os: osx
+      if: branch IN (nightly, release)
+      osx_image: xcode11
+
+language: node_js
+git:
+  submodules: false
+branches:
+  only:
+    - develop
+    - release
+    - nightly
+cache: npm
+
+before_install:
+  - git submodule update --init --recursive
+  - |
+    if [ $TRAVIS_BRANCH == "nightly" ]; then
+      git remote add source https://${GH_TOKEN}@github.com/getferdi/ferdi.git > /dev/null 2>&1
+      git fetch source
+      git merge --no-ff --commit -m "Merge remote-tracking branch 'source/develop' into HEAD [skip ci]" source/develop
+      CHANGES_COUNT=$(git diff --stat HEAD origin/nightly | wc -l)
+      echo $TRAVIS_EVENT_TYPE
+      echo $changes
+      if [ $CHANGES_COUNT -eq 0 -a $TRAVIS_EVENT_TYPE == "cron" ]; then
+        travis_terminate 0;
+      else
+        git submodule update --remote --force
+        git add .
+        git commit -m "Update submodules [skip ci]" || true
+      fi
+    fi
+install:
+  - cd recipes && npm install && npm run package && cd ..
+  - travis_retry npx lerna bootstrap
+  - travis_retry npm install node-sass -g
+before_script:
+  - npm run lint && npm run test
+script:
+  - |
+    if [ $TRAVIS_BRANCH == "release" ]; then
+      echo "Building..."
+      travis_retry travis_wait 100 npm run build -- --publish always -c.publish.provider=github -c.publish.owner=getferdi -c.publish.repo=ferdi -c.mac.identity=null
+    fi
+  - |
+    if [ $TRAVIS_BRANCH == "nightly" ]; then
+      git add .
+      git commit -m "Apply linter fixes [skip ci]"
+      npm version prerelease --preid=nightly -m "%s and trigger AppVeyor nightly build [skip travisci]"
+      echo "Building..."
+      travis_retry travis_wait 100 npm run build -- --publish always -c.publish.provider=github -c.publish.owner=getferdi -c.publish.repo=nightlies
+      if [ $TRAVIS_OS_NAME == "osx" ]; then
+        git remote add nightly https://${GH_TOKEN}@github.com/getferdi/ferdi.git > /dev/null 2>&1
+        git push --quiet --set-upstream nightly HEAD:nightly >/dev/null 2>&1
+      fi
+    fi
