@@ -433,7 +433,7 @@
   "settings.services.tooltip.isMuted": "All sounds are muted",
   "settings.services.tooltip.notificationsDisabled": "Notifications are disabled",
   "settings.services.updatedInfo": "Your changes have been saved",
-  "settings.supportFerdi.aboutIntro": "<p>Duct is an open-source and a community-lead application.</p><p>Thanks to the people who make this possbile:</p>",
+  "settings.supportFerdi.aboutIntro": "<p>Duct is a messaging app for WhatsApp, Slack, Telegram, HipChat, Hangouts and many more.</p>",
   "settings.supportFerdi.bannerText": "Do you want to help us improve Duct?",
   "settings.supportFerdi.headline": "About Duct",
   "settings.supportFerdi.openSurvey": "Open survey",
