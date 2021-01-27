@@ -267,7 +267,7 @@ class UserController {
       return response.status(401).send(errorMessage);
     }
 
-    return response.send('Your account has been imported. You can now use your Franz account in Ferdi.');
+    return response.send('Your account has been imported. You can now use your Franz account in Duct.');
   }
 
 

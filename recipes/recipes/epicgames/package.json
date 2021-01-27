@@ -2,7 +2,7 @@
   "id": "epicgames",
   "name": "Epic Games Store",
   "version": "1.0.0",
-  "description": "An unofficial Ferdi recipe for the Epic Games Store",
+  "description": "An unofficial Duct recipe for the Epic Games Store",
   "main": "index.js",
   "author": "Kittywhiskers Van Gogh <63189531+kittywhiskers@users.noreply.github.com>",
   "license": "MIT",

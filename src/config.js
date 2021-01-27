@@ -169,8 +169,8 @@ export const FILE_SYSTEM_SETTINGS_TYPES = [
   'proxy',
 ];
 
-export const LOCAL_SERVER = 'You are using Ferdi without a server';
-export const SERVER_NOT_LOADED = 'Ferdi::SERVER_NOT_LOADED';
+export const LOCAL_SERVER = 'You are using Duct without a server';
+export const SERVER_NOT_LOADED = 'Duct::SERVER_NOT_LOADED';
 
 // Set app directory before loading user modules
 if (process.env.FERDI_APPDATA_DIR != null) {

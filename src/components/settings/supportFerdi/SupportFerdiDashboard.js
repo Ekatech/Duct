@@ -28,7 +28,7 @@ const messages = defineMessages({
   },
   textVolunteers: {
     id: 'settings.supportFerdi.textVolunteers',
-    defaultMessage: '!!!The development of Ferdi is done by volunteers. People who use Ferdi like you. They maintain, fix, and improve Ferdi in their spare time.',
+    defaultMessage: '!!!The development of Duct is done by volunteers. People who use Duct like you. They maintain, fix, and improve Duct in their spare time.',
   },
   textSupportWelcome: {
     id: 'settings.supportFerdi.textSupportWelcome',
@@ -48,7 +48,7 @@ const messages = defineMessages({
   },
   textDonation: {
     id: 'settings.supportFerdi.textDonation',
-    defaultMessage: '!!!If you feel like supporting Ferdi development with a donation, you can do so on both,',
+    defaultMessage: '!!!If you feel like supporting Duct development with a donation, you can do so on both,',
   },
   textDonationAnd: {
     id: 'settings.supportFerdi.textDonationAnd',

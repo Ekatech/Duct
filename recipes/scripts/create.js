@@ -10,9 +10,9 @@ if (process.argv.length < 3) {
 For example:
 npm run create WhatsApp
 npm run create "Google Hangouts"
-You can set "Folder name" to "FerdiDev" to use Ferdi's development instance instead:
+You can set "Folder name" to "DuctDev" to use Duct's development instance instead:
 
-npm run create WhatsApp FerdiDev
+npm run create WhatsApp DuctDev
 `);
   return;
 }
@@ -20,7 +20,7 @@ npm run create WhatsApp FerdiDev
 const recipeName = process.argv[2];
 const recipe = recipeName.toLowerCase().replace(/\s/g, '-');
 const cleanRecipeId = recipe.replace(/[^a-z]/g, ''); // Clean recipe ID only containing a-z, for usage as the JavaScript class name
-const folderName = process.argv[3] || 'Ferdi';
+const folderName = process.argv[3] || 'Duct';
 const filesThatNeedTextReplace = ['package.json', 'index.js', 'README.md'];
 
 (async () => {
@@ -33,7 +33,7 @@ const filesThatNeedTextReplace = ['package.json', 'index.js', 'README.md'];
 
   // Make sure dev recipe folder exists
   if (!await fs.exists(recipesFolder)) {
-    console.log(`Couldn't find your recipe folder (${recipesFolder}). Is Ferdi installed?`);
+    console.log(`Couldn't find your recipe folder (${recipesFolder}). Is Duct installed?`);
     return;
   }
   await fs.ensureDir(devRecipeFolder);
@@ -64,7 +64,7 @@ const filesThatNeedTextReplace = ['package.json', 'index.js', 'README.md'];
   console.log(`✅ Successfully created your recipe.
   
 What's next?
-- Make sure you restart Ferdi in order for the recipe to show up
+- Make sure you restart Duct in order for the recipe to show up
 - Customise "webview.js", "package.json", "icon.svg" and "icon.png (see https://github.com/getferdi/recipes/blob/master/docs/integration.md#recipe-structure)
 - Publish your recipe (see https://github.com/getferdi/recipes/blob/master/docs/integration.md#publishing)`);
 })();

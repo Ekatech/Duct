@@ -4,7 +4,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-console.log('Applying Ferdi branding to translations...');
+console.log('Applying Duct branding to translations...');
 
 // Keys to ignore when applying branding
 const ignore = [

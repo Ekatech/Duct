@@ -85,7 +85,7 @@ export default class TrayIcon {
 
     this.trayIcon = new Tray(this._getAsset('tray', INDICATOR_TRAY_PLAIN));
 
-    this.trayIcon.setToolTip('Ferdi');
+    this.trayIcon.setToolTip('Duct');
 
     this.trayMenu = Menu.buildFromTemplate(this.trayMenuTemplate);
     if (isLinux) {
